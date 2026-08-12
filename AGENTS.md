@@ -28,6 +28,7 @@ yarn preview    # 預覽 production build
 - **內容語言**：多為繁體中文
 - **tsconfig.json** 引用 `.nuxt/` 下的 generated config（`.nuxt/` 已 gitignore）
 - **內容資料庫**：`better-sqlite3`（Nuxt Content v3 內建）
+- **UI組件框架**： `nuxt/ui`，官方文檔：https://ui.nuxtjs.org.cn/docs/
 
 ## 內容規範
 
