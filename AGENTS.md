@@ -11,6 +11,8 @@ nvm use 22
 
 ## 開發指令
 
+修改完程式，除非當次指令要求，否則不要執行驗證
+
 ```bash
 yarn dev        # 啟動 dev server，預設 http://localhost:3000
 yarn build      # 正式建置
