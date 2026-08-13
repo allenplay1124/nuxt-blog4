@@ -4,10 +4,7 @@ Nuxt 4 + Nuxt Content v3 的個人部落格，使用 Yarn v1。
 
 ## 開發環境
 
-確認開發環境 node.js 版本
-```bash
-nvm use 22
-```
+需要確認node.js版本，可以使用 `nvm use 22`
 
 ## 開發指令
 
@@ -42,3 +39,4 @@ yarn preview    # 預覽 production build
 
 - **無 CI/CD**、無環境變數檔（`.env` 已 gitignore 但不存在）、無 Docker
 - **無 devDependencies**：所有工具鏈由 Nuxt 內建提供
+- **AI AGENT交互**：與 AI 模型交互使用繁體中文
