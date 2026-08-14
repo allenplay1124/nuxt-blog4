@@ -5,7 +5,7 @@ image: /images/articles/2025-02-05-linux-nohup/cover.png
 pubDate: 2025-02-05 14:30:00
 status: true
 category: dev_ops
-tags: 
+tags:
     - dev_ops
     - Linux
 ---
