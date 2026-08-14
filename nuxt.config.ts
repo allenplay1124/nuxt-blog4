@@ -3,6 +3,21 @@ export default defineNuxtConfig({
   modules: ["@nuxt/content", "@nuxt/ui"],
   css: ["~/assets/css/main.css"],
 
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          theme: {
+            default: "github-dark",
+            dark: "github-dark",
+            light: "github-light",
+          },
+          langs: ["bash", "php", "go", "sql", "json", "javascript", "typescript"],
+        },
+      },
+    },
+  },
+
   app: {
     head: {
       title: "艾玩不累格",
