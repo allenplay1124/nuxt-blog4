@@ -38,51 +38,96 @@ const truncateSummary = (summary: string, maxLength = 150) => {
   if (!summary) return '';
   return summary.length > maxLength ? summary.substring(0, maxLength) + '...' : summary;
 };
+
+const gridRef = ref<HTMLElement | null>(null);
+let observer: IntersectionObserver | null = null;
+
+const observeCards = () => {
+  observer?.disconnect();
+  nextTick(() => {
+    gridRef.value?.querySelectorAll('[data-reveal]').forEach((el) => {
+      observer?.observe(el);
+    });
+  });
+};
+
+onMounted(() => {
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer?.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  observeCards();
+});
+
+onBeforeUnmount(() => observer?.disconnect());
+
+watch(paginatedArticles, () => observeCards());
 </script>
 
 <template>
   <main class="container mx-auto px-4 py-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div ref="gridRef" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <UCard
-        v-for="article in paginatedArticles"
+        v-for="(article, index) in paginatedArticles"
         :key="article.path"
+        data-reveal
+        class="card-enter hover:outline outline-cyan-500/50 hover:shadow-lg shadow-cyan-500/50"
+        :style="{ transitionDelay: `${index * 80}ms` }"
         :ui="{
           body: 'p-0',
           header: 'p-0'
         }"
       >
-        <NuxtLink :to="article.path">
+        <NuxtLink :to="article.path" class="block overflow-hidden">
           <img
             v-if="article.image"
             :src="article.image"
             :alt="article.title"
-            class="w-full h-48 object-cover"
+            class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
           />
+        </NuxtLink>
+        
+        <div class="p-4">
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <NuxtLink
+              v-if="article.category"
+              :to="`/categories/${article.category}`"
+              class="bg-cyan-500 text-white text-sm px-2.5 py-1 rounded hover:outline outline-cyan-500/50 hover:shadow-lg shadow-cyan-500/50"
+            >
+              {{ article.category }}
+            </NuxtLink>
+          </div>
           
-          <div class="p-4">
-            <UBadge v-if="article.category" :label="article.category" color="primary" class="mb-2" />
-            
-            <h2 class="text-xl font-bold mb-2 line-clamp-2">{{ article.title }}</h2>
-            
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
-              {{ formatDate(article.pubDate) }}
-            </p>
-            
-            <p class="text-gray-600 dark:text-gray-300 mb-3 line-clamp-3">
-              {{ truncateSummary(article.summary) }}
-            </p>
-            
-            <div class="flex flex-wrap gap-2">
+          <h2 class="text-xl font-bold mb-2 line-clamp-2">
+            <NuxtLink :to="article.path">{{ article.title }}</NuxtLink>
+          </h2>
+          
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+            {{ formatDate(article.pubDate) }}
+          </p>
+          
+          <p class="text-gray-600 dark:text-gray-300 mb-3 line-clamp-3">
+            {{ truncateSummary(article.summary) }}
+          </p>
+          
+          <div class="flex flex-wrap gap-2">
+            <NuxtLink
+              v-for="tag in article.tags"
+              :key="tag"
+              :to="`/tags/${tag}`"
+            >
               <UBadge
-                v-for="tag in article.tags"
-                :key="tag"
                 :label="tag"
                 color="neutral"
                 variant="subtle"
               />
-            </div>
+            </NuxtLink>
           </div>
-        </NuxtLink>
+        </div>
       </UCard>
     </div>
     
@@ -96,15 +141,16 @@ const truncateSummary = (summary: string, maxLength = 150) => {
       />
       
       <div class="flex items-center gap-1">
-        <UButton
+        <button
           v-for="page in totalPages"
           :key="page"
-          :label="String(page)"
-          :color="currentPage === page ? 'primary' : 'neutral'"
-          :variant="currentPage === page ? 'solid' : 'ghost'"
-          size="sm"
           @click="currentPage = page"
-        />
+          :class="currentPage === page
+            ? 'bg-cyan-500 text-white px-3 py-1.5 text-sm rounded-md hover:outline outline-cyan-500/50 hover:shadow-lg shadow-cyan-500/50'
+            : 'px-3 py-1.5 text-sm rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'"
+        >
+          {{ page }}
+        </button>
       </div>
       
       <UButton
@@ -117,3 +163,17 @@ const truncateSummary = (summary: string, maxLength = 150) => {
     </div>
   </main>
 </template>
+
+<style scoped>
+.card-enter {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.card-enter.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
