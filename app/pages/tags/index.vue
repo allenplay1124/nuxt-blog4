@@ -50,7 +50,7 @@ const fontSize = (count: number) => {
           :key="tag.tag"
           :to="`/tags/${tag.tag}`"
           :style="{ fontSize: fontSize(tag.count) }"
-          class="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+          class="text-blue-600 hover:text-blue-800 dark:text-cyan-400 dark:hover:text-cyan-300 hover:underline transition-colors"
         >
           {{ tag.tag }}({{ tag.count }})
         </NuxtLink>

@@ -116,7 +116,7 @@ const categoryArticles = computed(() => {
             <template #title="{ item }">
               <NuxtLink 
                 :to="item.path" 
-                class="text-blue-600 hover:text-blue-800 transition-colors"
+                class="text-blue-600 hover:text-blue-800 dark:text-cyan-400 dark:hover:text-cyan-300 transition-colors"
               >
                 {{ item.title }}
               </NuxtLink>
