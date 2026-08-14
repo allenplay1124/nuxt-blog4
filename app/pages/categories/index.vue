@@ -88,7 +88,9 @@ const categoryArticles = computed(() => {
       </div>
 
       <div class="mt-12">
-        <h2 class="text-3xl font-bold mb-8">分類文章</h2>
+        <h2 class="text-3xl font-bold mb-8">
+          分類文章
+        </h2>
         
         <div v-for="group in categoryArticles" :key="group.category" class="mb-12">
           <div class="flex items-center justify-between mb-4">
@@ -107,7 +109,8 @@ const categoryArticles = computed(() => {
             :items="group.articles.map(a => ({
               date: formatDate(a.pubDate),
               title: a.title,
-              path: a.path
+              path: a.path,
+              icon: 'i-lucide-file-text',
             }))"
           >
             <template #title="{ item }">
