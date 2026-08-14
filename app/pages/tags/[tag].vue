@@ -2,11 +2,11 @@
   <main class="container mx-auto px-4 py-8">
     <Breadcrumb :items="[
       { label: '首頁', to: '/' },
-      { label: '分類', to: '/categories' },
-      { label: category }
+      { label: '標籤', to: '/tags' },
+      { label: tag }
     ]" />
 
-    <h1 class="text-3xl font-bold mb-8">{{ category }} 分類文章</h1>
+    <h1 class="text-3xl font-bold mb-8">{{ tag }} 標籤文章</h1>
 
     <p v-if="!articles?.length" class="text-gray-500">
       目前沒有文章
@@ -59,12 +59,12 @@
 
             <div class="flex flex-wrap gap-2">
               <NuxtLink
-                v-for="tag in article.tags"
-                :key="tag"
-                :to="`/tags/${tag}`"
+                v-for="item in article.tags"
+                :key="item"
+                :to="`/tags/${item}`"
               >
                 <UBadge
-                  :label="tag"
+                  :label="item"
                   color="neutral"
                   variant="subtle"
                 />
@@ -110,15 +110,15 @@
 
 <script setup lang="ts">
 const route = useRoute()
-const category = route.params.category as string
+const tag = route.params.tag as string
 
 const currentPage = ref(1)
 const itemsPerPage = 12
 
-const { data: articles } = await useAsyncData(`category-${category}`, () => {
+const { data: articles } = await useAsyncData(`tag-${tag}`, () => {
   return queryCollection('content')
     .where('path', 'LIKE', '/articles/%')
-    .where('category', '=', category)
+    .where('tags', 'LIKE', `%"${tag}"%`)
     .where('status', '=', true)
     .order('pubDate', 'DESC')
     .select('title', 'pubDate', 'path', 'summary', 'tags', 'image', 'category')
