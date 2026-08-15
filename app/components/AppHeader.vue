@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const searchOpen = ref(false);
+const q = ref("");
 
 const links = [
   { label: "首頁", to: "/" },
@@ -7,6 +8,49 @@ const links = [
   { label: "分類", to: "/categories" },
   { label: "標籤雲", to: "/tags" },
 ];
+
+const { data: articles } = await useAsyncData("search", () => {
+  return queryCollection("content")
+    .where("path", "LIKE", "/articles/%")
+    .where("status", "=", true)
+    .order("pubDate", "DESC")
+    .all();
+});
+
+const results = computed(() => {
+  const term = q.value.trim().toLowerCase();
+  if (!term) return [];
+  return (articles.value || [])
+    .filter((article) => {
+      const haystack = [
+        article.title,
+        article.summary,
+        article.category,
+        ...(article.tags || []),
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(term);
+    })
+    .slice(0, 10);
+});
+
+const closeSearch = () => {
+  searchOpen.value = false;
+  q.value = "";
+};
+
+onMounted(() => {
+  const handler = (e: KeyboardEvent) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      searchOpen.value = true;
+    }
+  };
+  window.addEventListener("keydown", handler);
+  onBeforeUnmount(() => window.removeEventListener("keydown", handler));
+});
 </script>
 
 <template>
@@ -68,4 +112,54 @@ const links = [
       </div>
     </template>
   </UHeader>
+
+  <UModal
+    v-model:open="searchOpen"
+    title="搜尋文章"
+    :ui="{ content: 'sm:max-w-2xl' }"
+  >
+    <template #content>
+      <UInput
+        v-model="q"
+        icon="i-lucide-search"
+        placeholder="輸入關鍵字…"
+        autofocus
+        size="lg"
+        color="cyan"
+        class="w-full"
+      />
+
+      <ul v-if="results.length" class="mt-4 flex flex-col">
+        <li v-for="r in results" :key="r.path">
+          <NuxtLink
+            :to="r.path"
+            class="flex flex-col gap-0.5 rounded-md px-3 py-2.5 hover:bg-elevated"
+            @click="closeSearch"
+          >
+            <span class="font-medium">{{ r.title }}</span>
+            <span
+              v-if="r.summary"
+              class="line-clamp-1 text-sm text-gray-500 dark:text-gray-400"
+            >
+              {{ r.summary }}
+            </span>
+          </NuxtLink>
+        </li>
+      </ul>
+
+      <p
+        v-else-if="q.trim()"
+        class="mt-4 text-center text-sm text-gray-500 dark:text-gray-400"
+      >
+        找不到相符文章
+      </p>
+
+      <p
+        v-else
+        class="mt-4 text-center text-sm text-gray-500 dark:text-gray-400"
+      >
+        輸入關鍵字以搜尋文章（標題、摘要、分類、標籤）
+      </p>
+    </template>
+  </UModal>
 </template>
