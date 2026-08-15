@@ -1,2 +1,13 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@layer base {
+  /* Disqus embed.js 僅能解析 rgb()/hex 顏色，oklch() 會讓它拋錯中斷 */
+  a {
+    color: #06b6d4; /* cyan-500，與站內 ProseA 連結色一致 */
+  }
+
+  .dark body {
+    background-color: #0f172a; /* 等同 slate-900 的 hex，覆蓋 oklch 版本 */
+  }
+}

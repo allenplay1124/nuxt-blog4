@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data: page } = await useAsyncData("about", () => {
-  return queryCollection("content").path("/docs/profile").first();
+  return queryCollection("content").path("/abount").first();
 });
 
 if (!page.value) {

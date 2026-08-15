@@ -5,6 +5,12 @@ const { data: page } = await useAsyncData("page-" + route.path, () => {
   return queryCollection("content").path(route.path).first();
 });
 
+const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
+  return queryCollectionItemSurroundings("content", route.path, {
+    fields: ["summary"],
+  });
+});
+
 const formatDateTime = (dateStr: string) => {
   const date = new Date(dateStr.replace(" ", "T"));
   if (Number.isNaN(date.getTime())) return dateStr;
@@ -67,6 +73,13 @@ if (!page.value) {
 
       <UPageBody>
         <ContentRenderer v-if="page" :value="page" />
+
+        <USeparator v-if="surround?.filter(Boolean).length" />
+        <UContentSurround :surround="(surround as any)" />
+
+        <ClientOnly>
+          <DisqusComments :identifier="page.path" />
+        </ClientOnly>
       </UPageBody>
     </UContainer>
 
