@@ -1,5 +1,6 @@
 ---
 title: 關於我
+image: /images/profile.png
 ---
 
 目前是一個 Web 全端工程師，喜歡研究網頁相關技術，不管是前端還是後端都相當興趣。
