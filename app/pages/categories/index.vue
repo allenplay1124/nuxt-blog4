@@ -66,21 +66,21 @@ const categoryArticles = computed(() => {
 
       <p v-if="!categories.length" class="text-gray-500">目前沒有分類</p>
 
-      <div v-else class="space-y-3">
+      <div v-else class="flex flex-wrap items-center gap-3">
         <span
           v-for="cat in categories"
           :key="cat.category"
-          class="m-2 bg-cyan-500 p-2 rounded-lg hover:outline outline-cyan-500/50 hover:shadow-lg shadow-cyan-500/50"
+          class="inline-flex items-center bg-cyan-500 px-2 py-1 rounded-lg hover:outline outline-cyan-500/50 hover:shadow-lg shadow-cyan-500/50"
         >
           <NuxtLink
             :to="`/categories/${cat.category}`"
-            class="text-white  transition-colors"
+            class="text-white inline-flex items-center gap-2 transition-colors"
           >
-            <span class="mr-2">
-              {{ cat.category }} 
+            <span>
+              {{ cat.category }}
             </span>
-            
-            <span class="bg-white rounded-full px-2 py-1 text-gray-800">
+
+            <span class="bg-white rounded-full min-w-8 h-8 inline-flex items-center justify-center text-gray-800">
               {{ cat.count }}
             </span>
           </NuxtLink>
