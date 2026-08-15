@@ -5,7 +5,7 @@ export default defineContentConfig({
   collections: {
     content: defineCollection({
       type: 'page',
-      source: 'articles/*.md',
+      source: '**',
       schema: z.object({
         status: z.boolean().default(false),
         pubDate: z.string().optional(),
