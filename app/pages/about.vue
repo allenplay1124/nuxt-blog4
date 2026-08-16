@@ -10,10 +10,17 @@ if (!page.value) {
     fatal: true,
   });
 }
+
+useSeo({
+  title: '關於我',
+  description: page.value.summary || '關於吳佳霖 - 艾玩不累格作者簡介',
+  image: page.value.image
+})
 </script>
 
 <template>
   <UPage>
+    <JsonLd />
     <UContainer>
       <UPageHeader :title="page.title" />
 

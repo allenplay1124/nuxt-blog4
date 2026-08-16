@@ -1,4 +1,9 @@
 <script setup lang="ts">
+useSeo({
+  title: '標籤雲',
+  description: '瀏覽艾玩不累格所有文章標籤，探索感興趣的主題'
+})
+
 const { data: articles } = await useAsyncData("tags", () => {
   return queryCollection("content")
     .where("path", "LIKE", "/articles/%")
@@ -37,6 +42,7 @@ const fontSize = (count: number) => {
 
 <template>
   <main>
+    <JsonLd />
     <UContainer class="container mx-auto px-4 py-8">
       <Breadcrumb :items="[{ label: '首頁', to: '/' }, { label: '標籤雲' }]" />
 

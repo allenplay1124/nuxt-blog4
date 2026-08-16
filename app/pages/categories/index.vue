@@ -2,6 +2,11 @@
 import type { TimelineItem } from '@nuxt/ui'
 import { formatDate } from '~/utils/date'
 
+useSeo({
+  title: '分類',
+  description: '瀏覽艾玩不累格所有文章分類，按分類查看相關文章'
+})
+
 const { data: articles } = await useAsyncData("categories", () => {
   return queryCollection("content")
     .where("path", "LIKE", "/articles/%")
@@ -59,6 +64,7 @@ const categoryArticles = computed(() => {
 
 <template>
   <main>
+    <JsonLd />
     <UContainer class="container mx-auto px-4 py-8">
       <Breadcrumb :items="[{ label: '首頁', to: '/' }, { label: '分類' }]" />
 

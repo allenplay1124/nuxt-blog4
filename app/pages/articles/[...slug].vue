@@ -29,20 +29,39 @@ if (!page.value) {
     fatal: true,
   });
 }
+
+useSeo({
+  title: page.value.title,
+  description: page.value.summary,
+  image: page.value.image,
+  type: 'article',
+  publishedTime: page.value.pubDate,
+  tags: page.value.tags
+})
 </script>
 
 <template>
   <UPage>
+    <JsonLd 
+      :article="{
+        title: page.title,
+        description: page.summary,
+        image: page.image,
+        publishedTime: page.pubDate,
+        tags: page.tags
+      }"
+    />
     <UContainer>
       <UPageHeader :title="page.title" :description="page.summary">
         <div class="flex flex-wrap items-center gap-3 mt-4">
-          <span
+          <time 
             v-if="page.pubDate"
+            :datetime="page.pubDate"
             class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1.5"
           >
             <UIcon name="i-lucide-calendar" class="size-4" />
             {{ formatDateTime(page.pubDate) }}
-          </span>
+          </time>
           分類：
           <NuxtLink
             v-if="page.category"

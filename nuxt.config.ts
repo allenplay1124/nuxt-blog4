@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxt/content", "@nuxt/ui", "nuxt-disqus"],
+  modules: ["@nuxt/content", "@nuxt/ui", "nuxt-disqus", "@nuxtjs/sitemap"],
   css: ["~/assets/css/main.css"],
 
   content: {
@@ -12,7 +12,15 @@ export default defineNuxtConfig({
             dark: "github-dark",
             light: "github-light",
           },
-          langs: ["bash", "php", "go", "sql", "json", "javascript", "typescript"],
+          langs: [
+            "bash",
+            "php",
+            "go",
+            "sql",
+            "json",
+            "javascript",
+            "typescript",
+          ],
         },
       },
     },
@@ -38,6 +46,16 @@ export default defineNuxtConfig({
       title: "艾玩不累格",
     },
   },
+
+  site: {
+    url: "https://allenplay.net",
+    name: "艾玩不累格",
+  },
+
+  sitemap: {
+    sources: ["/api/__sitemap__/urls"],
+  },
+
   devtools: { enabled: true },
   compatibilityDate: "2024-04-03",
 });

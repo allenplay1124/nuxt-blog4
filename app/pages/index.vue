@@ -1,4 +1,6 @@
 <script setup lang="ts">
+useSeo()
+
 definePageMeta({
   layout: "default",
 });
@@ -70,6 +72,8 @@ watch(paginatedArticles, () => observeCards());
 
 <template>
   <main class="container mx-auto px-4 py-8">
+    <h1 class="sr-only">艾玩不累格 - 吳佳霖的個人部落格</h1>
+    <JsonLd />
     <div ref="gridRef" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <UCard
         v-for="(article, index) in paginatedArticles"

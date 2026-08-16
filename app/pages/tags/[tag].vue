@@ -1,5 +1,12 @@
 <template>
   <main class="container mx-auto px-4 py-8">
+    <JsonLd 
+      :breadcrumbs="[
+        { name: '首頁', url: '/' },
+        { name: '標籤', url: '/tags' },
+        { name: tag }
+      ]"
+    />
     <Breadcrumb :items="[
       { label: '首頁', to: '/' },
       { label: '標籤', to: '/tags' },
@@ -111,6 +118,11 @@
 <script setup lang="ts">
 const route = useRoute()
 const tag = route.params.tag as string
+
+useSeo({
+  title: `${tag} 標籤文章`,
+  description: `瀏覽「${tag}」標籤的相關文章`
+})
 
 const currentPage = ref(1)
 const itemsPerPage = 12
