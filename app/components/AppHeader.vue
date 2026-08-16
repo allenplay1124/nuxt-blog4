@@ -87,6 +87,24 @@ onMounted(() => {
 
     <template #right>
       <UButton
+        icon="i-lucide-github"
+        :to="'https://github.com/allenplay1124'"
+        target="_blank"
+        color="neutral"
+        variant="ghost"
+        square
+        aria-label="GitHub"
+      />
+      <UButton
+        icon="i-lucide-facebook"
+        :to="'https://www.facebook.com/520allenplay'"
+        target="_blank"
+        color="neutral"
+        variant="ghost"
+        square
+        aria-label="Facebook"
+      />
+      <UButton
         icon="i-lucide-search"
         color="neutral"
         variant="ghost"
