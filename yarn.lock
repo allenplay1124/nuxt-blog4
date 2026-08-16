@@ -6178,6 +6178,15 @@ nuxt-disqus@1.2.0:
     defu "^6.1.4"
     vue3-disqus "^1.0.7"
 
+nuxt-gtag@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/nuxt-gtag/-/nuxt-gtag-5.0.0.tgz#f7350721d673e853ccf9f51a0bae61abdaccc4f3"
+  integrity sha512-L0h7p4khJRWomv0HkyyL6jhWEejdFw2uS1LaJZG3rTwLWdxcCIbpoBRbjDtFQAc9owyYkLTBbmS90XZs/gElhQ==
+  dependencies:
+    "@nuxt/kit" "^4.5.2"
+    defu "^6.1.7"
+    ufo "^1.6.4"
+
 nuxt-site-config-kit@4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/nuxt-site-config-kit/-/nuxt-site-config-kit-4.2.2.tgz#fa65797072a238280703101cd144b9e871c9da7a"

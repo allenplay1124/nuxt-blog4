@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxt/content", "@nuxt/ui", "nuxt-disqus", "@nuxtjs/sitemap"],
+  modules: ["@nuxt/content", "@nuxt/ui", "nuxt-disqus", "@nuxtjs/sitemap", "nuxt-gtag"],
   css: ["~/assets/css/main.css"],
 
   content: {
@@ -28,6 +28,10 @@ export default defineNuxtConfig({
 
   disqus: {
     shortname: "allenplaynet1124",
+  },
+
+  gtag: {
+    id: 'G-H8YVR9KZPX'
   },
 
   app: {
