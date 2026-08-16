@@ -56,9 +56,7 @@ export default defineNuxtConfig({
     name: "艾玩不累格",
   },
 
-  sitemap: {
-    sources: ["/api/__sitemap__/urls"],
-  },
+  sitemap: {},
 
   devtools: { enabled: true },
   compatibilityDate: "2024-04-03",
