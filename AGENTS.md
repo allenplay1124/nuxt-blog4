@@ -19,6 +19,14 @@ yarn preview    # 預覽 production build
 
 無測試、無 lint、無 typecheck 腳本（Nuxt 內建處理，不需額外工具）。
 
+## 部署
+
+push 到 `main` 會觸發 `.github/workflows/deploy.yml`：`yarn generate` 後以 `peaceiris/actions-gh-pages` 將 `.output/public` 發佈到 `allenplay1124/allenplay1124.github.io` 的 `main` branch（GitHub Pages，自訂網域 allenplay.net）。
+
+- 認證方式：SSH Deploy Key（私鑰存於本 repo secret `ACTIONS_DEPLOY_KEY`，公鑰存於 pages repo 的 Deploy keys 並勾選 Allow write access）
+- `public/CNAME` 會隨輸出一併發佈，維持自訂網域設定
+- action 預設自動加入 `.nojekyll`，不需手動建立
+
 ## 架構重點
 
 - **入口頁面**：`app/pages/[...slug].vue` — catch-all 路由，使用 `queryCollection('content').path(route.path).first()`（Nuxt Content v3 API，非 v2 的 `queryContent`）
