@@ -11,7 +11,7 @@ export interface SeoOptions {
 }
 
 const SITE_NAME = '艾玩不累格'
-const SITE_URL = 'https://blog.allenplay.net'
+const SITE_URL = 'https://allenplay.net'
 const DEFAULT_IMAGE = '/images/og-default.png'
 const DEFAULT_DESCRIPTION = '艾玩不累格 - 吳佳霖的個人部落格，分享程式開發、技術筆記與生活心得'
 
