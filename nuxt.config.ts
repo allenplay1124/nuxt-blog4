@@ -42,6 +42,14 @@ export default defineNuxtConfig({
         { name: "description", content: "艾玩不累格 - 吳佳霖的個人網站" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
       ],
+      link: [
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&display=swap",
+        },
+      ],
     },
   },
 

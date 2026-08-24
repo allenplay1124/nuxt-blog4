@@ -16,16 +16,19 @@ const { data: articles } = await useAsyncData('home', () => {
     .all()
 });
 
+const heroArticle = computed(() => articles.value?.[0]);
+
+const listArticles = computed(() => articles.value?.slice(1) || []);
+
 const totalPages = computed(() => {
-  const total = articles.value?.length || 0;
+  const total = listArticles.value.length;
   return Math.ceil(total / itemsPerPage);
 });
 
 const paginatedArticles = computed(() => {
-  if (!articles.value) return [];
   const start = (currentPage.value - 1) * itemsPerPage;
   const end = start + itemsPerPage;
-  return articles.value.slice(start, end);
+  return listArticles.value.slice(start, end);
 });
 
 const formatDate = (dateStr: string) => {
@@ -73,6 +76,7 @@ watch(paginatedArticles, () => observeCards());
 <template>
   <main class="container mx-auto px-4 py-8">
     <h1 class="sr-only">艾玩不累格 - 吳佳霖的個人部落格</h1>
+    <HeroSection v-if="heroArticle" :article="heroArticle" />
     <JsonLd />
     <div ref="gridRef" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <UCard
