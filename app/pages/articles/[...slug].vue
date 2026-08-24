@@ -94,7 +94,11 @@ useSeo({
         <ContentRenderer v-if="page" :value="page" />
 
         <USeparator v-if="surround?.filter(Boolean).length" />
-        <UContentSurround :surround="(surround as any)" />
+        <UContentSurround :surround="(surround as any)">
+          <template #link-description="{ link }">
+            <span class="line-clamp-2">{{ link.summary }}</span>
+          </template>
+        </UContentSurround>
 
         <ClientOnly>
           <DisqusComments :identifier="page.path" />
