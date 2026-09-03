@@ -7,11 +7,8 @@ status: true
 category: ai
 tags:
     - AI
-    - 終端機
     - 開發工具
     - 開源
-    - Ghostty
-    - Herdr
     - software
 ---
 
