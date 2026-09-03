@@ -243,5 +243,3 @@ herdr workspace create --label frontend-app
 - [Herdr 官方網站](https://herdr.dev)
 - [Herdr GitHub](https://github.com/herdrdev/herdr)
 - [Herdr 文件](https://herdr.dev/docs/)
-- [Herdr Agent Skill](https://herdr.dev/docs/agent-skill/)
-- [Herdr Agent Guide](https://herdr.dev/agent-guide.md)
