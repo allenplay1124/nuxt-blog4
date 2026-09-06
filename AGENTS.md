@@ -41,6 +41,7 @@ push 到 `main` 會觸發 `.github/workflows/deploy.yml`：`yarn generate` 後�
 
 - **文章檔名**：`YYYY-MM-DD-slug.md`
 - **Frontmatter 欄位**：`title`, `summary`, `image`, `pubDate`, `status`, `category`, `tags`
+- `pubDate`：請代入系統時間，格式：`YYYY-MM-DD hh:mm`
 - **MDC 元件**：可在 Markdown 中使用 `::alert` 和 `::counter`
 
 ## 注意事項
