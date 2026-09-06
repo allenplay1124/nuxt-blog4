@@ -19,7 +19,8 @@ jobs:
           node-version: 22
           cache: yarn
 
-      - run: yarn install --frozen-lockfile
+      - run: corepack enable
+      - run: yarn install --immutable
       - run: yarn generate
 
       - uses: peaceiris/actions-gh-pages@v4
