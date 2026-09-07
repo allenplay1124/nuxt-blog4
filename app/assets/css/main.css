@@ -54,11 +54,7 @@
   infoblock h1,
   infoblock h2,
   infoblock h3,
-  infoblock h4,
-  info-block h1,
-  info-block h2,
-  info-block h3,
-  info-block h4 {
+  infoblock h4 {
     margin-top: 0;
     margin-bottom: 0.25rem;
     font-size: 1.05em;
