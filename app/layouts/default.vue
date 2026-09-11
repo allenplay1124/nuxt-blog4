@@ -4,6 +4,7 @@
       <app-header></app-header>
         <slot />
       <app-footer></app-footer>
+      <CookieConsent />
     </UContainer>
   </div>
 </template>
