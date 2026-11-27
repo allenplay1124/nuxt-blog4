@@ -47,6 +47,8 @@ AI 模型在訓練時大量接觸了 Material Design、Ant Design、shadcn/ui、
 
 控制整體頁面結構與排版的基礎元件。
 
+![版面與結構元件示意圖](/images/articles/2026-11-23-ui-component-naming-vibe-coding/layout-structure.png)
+
 | 名稱 | 說明 |
 |---|---|
 | Layout / Container | 控制整體頁面結構與最大寬度，限制內容不超出可讀範圍 |
@@ -58,6 +60,8 @@ AI 模型在訓練時大量接觸了 Material Design、Ant Design、shadcn/ui、
 ### 2. 導覽（Navigation）
 
 協助使用者在網站或應用中移動、定位與切換內容。
+
+![導覽元件示意圖](/images/articles/2026-11-23-ui-component-naming-vibe-coding/navigation.png)
 
 | 名稱 | 說明 |
 |---|---|
@@ -71,6 +75,8 @@ AI 模型在訓練時大量接觸了 Material Design、Ant Design、shadcn/ui、
 ### 3. 表單與輸入（Data Entry / Form）
 
 蒐集使用者輸入與觸發動作的元件。
+
+![表單與輸入元件示意圖](/images/articles/2026-11-23-ui-component-naming-vibe-coding/form.png)
 
 | 名稱 | 說明 |
 |---|---|
@@ -88,6 +94,8 @@ AI 模型在訓練時大量接觸了 Material Design、Ant Design、shadcn/ui、
 
 呈現資料與內容的元件。
 
+![資料展示元件示意圖](/images/articles/2026-11-23-ui-component-naming-vibe-coding/data-display.png)
+
 | 名稱 | 說明 |
 |---|---|
 | Table | 呈現結構化二維資料，常搭配排序與篩選 |
@@ -102,6 +110,8 @@ AI 模型在訓練時大量接觸了 Material Design、Ant Design、shadcn/ui、
 ### 5. 回饋與彈窗（Feedback & Overlay）
 
 提供操作結果回饋與覆蓋層互動的元件。
+
+![回饋與彈窗元件示意圖](/images/articles/2026-11-23-ui-component-naming-vibe-coding/feedback-overlay.png)
 
 | 名稱 | 說明 |
 |---|---|
