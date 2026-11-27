@@ -50,11 +50,11 @@ onMounted(() => {
             <span class="hero__flag">最新文章</span>
           </div>
 
-          <h1 class="hero__title hero-reveal" style="--d: 90ms">
+          <h2 class="hero__title hero-reveal" style="--d: 90ms">
             <NuxtLink :to="article.path" class="hero__title-link">
               {{ article.title }}
             </NuxtLink>
-          </h1>
+          </h2>
 
           <p class="hero__summary hero-reveal" style="--d: 180ms">
             {{ article.summary }}

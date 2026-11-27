@@ -11,7 +11,6 @@ tags:
     - 開源
 ---
 
-# Gemini CLI 教學：將 Gemini 的強大 AI 能力帶入你的終端機
 
 Google 發最新的 AI 開發工具 `Gemini CLI`，可以對標 Anthropic 的 `Claude Code` 和 OpenAI 的 `Codex CLI`等 AI 開發工具，也讓使得 AI開發工具的竸爭進入白熱化。
 

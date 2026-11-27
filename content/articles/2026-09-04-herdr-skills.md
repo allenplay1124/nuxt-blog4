@@ -13,8 +13,6 @@ tags:
     - 終端機
 ---
 
-# 讓 AI Agent 自己管理 AI Agent：Herdr Skills 進階實戰
-
 在上一篇〈[AI Agent 時代終端機新選擇：ghostty+herdr](/articles/2026-09-01-ai-agent-ghostty-herdr)〉中，我們介紹了 Herdr 如何在終端機裡管理多個 AI Agent：工作空間、分頁、窗格，以及一眼就能辨識的 Agent 狀態。
 
 但當 Agent 的數量開始增加，真正的瓶頸往往不在「能不能同時開很多窗格」，而在於：

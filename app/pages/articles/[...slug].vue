@@ -34,6 +34,7 @@ useSeo({
   title: page.value.title,
   description: page.value.summary,
   image: page.value.image,
+  url: page.value.path,
   type: 'article',
   publishedTime: page.value.pubDate,
   tags: page.value.tags
@@ -42,11 +43,12 @@ useSeo({
 
 <template>
   <UPage>
-    <JsonLd 
+    <JsonLd
       :article="{
         title: page.title,
         description: page.summary,
         image: page.image,
+        url: page.path,
         publishedTime: page.pubDate,
         tags: page.tags
       }"
