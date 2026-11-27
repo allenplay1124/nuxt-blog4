@@ -12,8 +12,6 @@ tags:
     - 開發工具
     - 開源
 ---
-# Orca 教學：用 ADE 同時駕馭多個 AI 編碼 Agent
-
 當一個 Agent 不夠用時，真正的痛點不是模型不夠聰明，而是**沒有人統一指揮與對帳**。Orca（[stablyai/orca](https://github.com/stablyai/orca)，官網 [onorca.dev](https://www.onorca.dev/)）就是為了解決這一段而生：它是一套開源的 **ADE（Agent Development Environment，Agent 開發環境）**，讓多個終端 Agent 各自跑在獨立的 git worktree 裡，並在同一介面統一監控、審閱與合併。
 
 它不賣模型、不吃 token，用的是你自己的訂閱。
@@ -56,7 +54,6 @@ Orca 的 worktree 是**真實的 git worktree**，不是自訂沙盒：在終端
 ## 安裝 Orca
 
 ```bash
-# macOS（Homebrew，必須用完整名稱）
 brew install --cask stablyai/orca/orca
 brew upgrade --cask stablyai/orca/orca
 

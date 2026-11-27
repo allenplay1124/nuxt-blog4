@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { toIsoDateTime } from '~/utils/date'
 
-const SITE_URL = 'https://blog.allenplay.net'
+const SITE_URL = 'https://allenplay.net'
 const SITE_NAME = '艾玩不累格'
 const AUTHOR_NAME = '吳佳霖'
 
@@ -33,7 +34,8 @@ const websiteSchema = computed(() => ({
   url: SITE_URL,
   author: {
     '@type': 'Person',
-    name: AUTHOR_NAME
+    name: AUTHOR_NAME,
+    sameAs: ['https://github.com/allenplay1124', 'https://www.facebook.com/520allenplay']
   }
 }))
 
@@ -42,7 +44,8 @@ const organizationSchema = computed(() => ({
   '@type': 'Organization',
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/favicon.ico`
+  logo: `${SITE_URL}/favicon.ico`,
+  sameAs: ['https://github.com/allenplay1124', 'https://www.facebook.com/520allenplay']
 }))
 
 const articleSchema = computed(() => {
@@ -53,14 +56,15 @@ const articleSchema = computed(() => {
     '@type': 'Article',
     headline: props.article.title,
     description: props.article.description,
-    image: props.article.image 
+    image: props.article.image
       ? (props.article.image.startsWith('http') ? props.article.image : `${SITE_URL}${props.article.image}`)
       : `${SITE_URL}/favicon.ico`,
-    datePublished: props.article.publishedTime,
-    dateModified: props.article.modifiedTime || props.article.publishedTime,
+    datePublished: toIsoDateTime(props.article.publishedTime) || props.article.publishedTime,
+    dateModified: toIsoDateTime(props.article.modifiedTime) || toIsoDateTime(props.article.publishedTime) || props.article.publishedTime,
     author: {
       '@type': 'Person',
-      name: props.article.author || AUTHOR_NAME
+      name: props.article.author || AUTHOR_NAME,
+      sameAs: ['https://github.com/allenplay1124', 'https://www.facebook.com/520allenplay']
     },
     publisher: {
       '@type': 'Organization',
@@ -72,7 +76,7 @@ const articleSchema = computed(() => {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': props.article.url || SITE_URL
+      '@id': props.article.url ? `${SITE_URL}${props.article.url}` : SITE_URL
     },
     keywords: props.article.tags?.join(', ')
   }

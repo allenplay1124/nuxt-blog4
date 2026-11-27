@@ -12,7 +12,6 @@ tags:
     - software
 ---
 
-# AI Agent 時代終端機新選擇：ghostty+herdr
 
 在這個大 AI 時代，使用 AI Agent 進行 `Vibe Coding` 已成為工作日常， 而目前各家大廠或開源專案都有提供 `CLI` 工作環境，所以終端機效能變得更重要，這也是我選擇 **ghostty** 的原因，它原生開發且支持 GPU 渲染，在終端機進行複雜渲染時，不必擔心畫面延遲。
 

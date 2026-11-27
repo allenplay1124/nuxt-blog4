@@ -50,6 +50,9 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'zh-Hant',
+      },
       title: "艾玩不累格",
       meta: [
         { charset: "utf-8" },
